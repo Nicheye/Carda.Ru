@@ -26,9 +26,10 @@ class Financial_Goal(models.Model):
 	name = models.CharField(max_length=100)
 	sum = models.PositiveIntegerField()
 	created_till = models.DateField(auto_now_add=False)
-
+	created_by = models.ForeignKey(User,on_delete=models.CASCADE)
 
 class Budget(models.Model):
-	
+	created_by = models.ForeignKey(User,on_delete=models.CASCADE)
+	created_at = models.DateField(auto_now_add=True)
 	category = models.ForeignKey(Type,on_delete=models.CASCADE)
 	sum = models.PositiveIntegerField()
