@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>JavaScript Donut Chart</title>
+    <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-pie.min.js"></script>
+    <style type="text/css">      
+      html, body, #container { 
+        width: 100%; height: 100%; margin: 0; padding: 0; 
+      } 
+    </style>
+  </head>
+  <body>  
+    <div id="container"></div>
+    <script>
+      anychart.onDocumentReady(function () {  
+        // add the data
+        var data = anychart.data.set([
+          ["Wimbledon", 5000],
+          ["Australian Open", 30000],
+          ["U.S. Open", 50000],
+          ["French Open", 10023]
+        ]);
+		var palette = anychart.palettes.distinctColors();
+        // create a pie chart instance with the passed data
+        palette.items([
+		{ color: "#563783" },
+		{ color: "#1b8cca" },
+		{ color: "#022789" },
+		{ color: "#d35220" }
+		]);
+
+		// create a pie chart instance with the passed data
+		var chart = anychart
+		.pie(data)
+		// set the inner radius to make a donut chart
+		.innerRadius("50%")
+		// set the color palette
+		.palette(palette);
+        // set the chart title
+        chart.title("Grand Slam Titles Won by Roger Federer");
+        // set the container id for the chart
+        chart.container("container");
+        // draw the resulting chart
+        chart.draw();
+		
+		var palette = anychart.palettes.distinctColors();
+  
+// add the colors according to the brands
+		
+			});
+    </script>
+  </body>
+</html>
