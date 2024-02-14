@@ -24,11 +24,7 @@ const Spend_form = () => {
 	const { data } = await axios.post('http://127.0.0.1:8000/api/v1/', user, config);
 
 
-	const options = [
-		{ value: 'chocolate', label: 'Chocolate' },
-		{ value: 'strawberry', label: 'Strawberry' },
-		{ value: 'vanilla', label: 'Vanilla' }
-	  ]
+	
 	  
 	window.location.href = '/'
 	}

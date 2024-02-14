@@ -1,20 +1,19 @@
 import React from 'react'
+import { useState } from 'react';
 import axios from 'axios';
-import { useState,useEffect } from 'react';
-
-const Income_form = () => {
-  const [type,setType] = useState('');
+const Saving_form = () => {
+	const [type,setType] = useState('');
 	const [sum,setSum] = useState('');
-  const [name,setName] = useState('');
+	const [name,setName] = useState('');
   // Create the submit method.
 	const submit = async e =>{
 	  e.preventDefault()
   
 	  const user = {
+		name:name,
 		sum:sum,
-    name:name,
 		type:type,
-		category:"Income",
+		category:"Saving",
 	  };
   // Create the POST requuest
 	const config = {
@@ -35,9 +34,10 @@ const Income_form = () => {
 		<>
 		<div className="container">
 		  <form action="" className='auth_form' onSubmit={submit}>
-			<div className="auth-title">Add Income</div>
+			<div className="auth-title">Add Saving</div>
+			
 
-      <input name='name' 
+			<input name='name' 
 			  type="text"     
 			  className="auth_input"
 			  placeholder="Enter name"
@@ -45,22 +45,21 @@ const Income_form = () => {
 			  required                
 			  onChange={e => setName(e.target.value)}/>
 
+
 			<select className="auth_select" 
-			  placeholder="выберите тип заработка" 
+			  placeholder="выберите тип сбережения" 
 			   value={type}
 			  required 
 			  onChange={e => setType(e.target.value)}
 			  >
-
-			<option value="salary">зарплата</option>
-			<option value="investment">инвестиции</option>
-			<option value="passive_income">пассивный доход</option>
-			<option value="hustle">hustle</option>
+			<option value="vklad">вклад</option>
+			<option value="stash">заначка</option>
+			<option value="metalls">драг металы</option>
 			
 			</select>
 			
 			  
-     
+  
   
 			<input name='sum' 
 			  type="number"     
@@ -80,4 +79,4 @@ const Income_form = () => {
 	)
 }
 
-export default Income_form
+export default Saving_form

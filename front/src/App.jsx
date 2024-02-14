@@ -9,6 +9,8 @@ import Logout from './components/Logout';
 import Navigate from './components/Navigate'
 import Register from './pages/Register'
 import Spend_form from './components/Spend_form'
+import Income_form from './components/Income_form'
+import Saving_form from './components/Saving_form'
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Main/>}/>
           <Route path="/spend_created" element={<Spend_form/>}/>
+          <Route path="/income_created" element={<Income_form/>}/>
+          <Route path="/saving_created" element={<Saving_form/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/logout" element={<Logout/>}/>
           <Route path="/register" element={<Register/>}/>
