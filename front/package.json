@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/material-next": "^6.0.0-alpha.123",
+    "@mui/styled-engine": "^5.15.9",
     "axios": "^1.6.1",
     "bootstrap": "^5.3.2",
+    "flowbite-react": "^0.7.2",
+    "miu": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.18.0"
+    "react-router-dom": "^6.18.0",
+    "react-select": "^5.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

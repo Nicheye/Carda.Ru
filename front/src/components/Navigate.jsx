@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-
+import logo from '../assets/logo.png'
 import {Link} from 'react-router-dom'
 
 const Navigate = () => {
@@ -12,7 +12,7 @@ const Navigate = () => {
   return (
 
   <>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  {/* <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +36,34 @@ const Navigate = () => {
                   
       </ul>
     
+    </div>
+  </div>
+</nav> */}
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      {isAuth ? <Link to="/" className='navbar-brand'>Home <img src={logo} alt="" /> </Link> : null}
+        
+      <div className="right">
+      {isAuth ? <Link to="/profile" className='nav-link'>Profile</Link> : null}
+
+
+      {isAuth ? <Link to="/logout" className='nav-link'>Logout</Link> :
+                
+
+      <Link to="/login" className='nav-link'>Login</Link>}
+      </div>
+      
+        
+                  
+        
+      </ul>
+     
     </div>
   </div>
 </nav>

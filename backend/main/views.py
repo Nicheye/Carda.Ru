@@ -29,11 +29,14 @@ class MainView(APIView):
 
 			#orm requests
 
-			incomes = Operation.objects.filter(category=income_cat,created_by=request.user,created_at__gte=thirty_days_ago)
-			spends = Operation.objects.filter(category=spend_cat,created_by=request.user,created_at__gte=thirty_days_ago)
-			savings = Operation.objects.filter(category=saving_cat,created_by=request.user)
-			budgets = Operation.objects.filter(category=budget_cat,created_by=request.user)
-			goals = Operation.objects.filter(category=goal_cat,created_by=request.user)
+			incomes = Operation.objects.filter(category=income_cat,created_by=request.user,created_at__gte=thirty_days_ago).order_by('-created_at')
+			spends = Operation.objects.filter(category=spend_cat,created_by=request.user,created_at__gte=thirty_days_ago).order_by('-created_at')
+			sum_spend = 0
+			for spend in spends:
+				sum_spend+=spend.sum
+			savings = Operation.objects.filter(category=saving_cat,created_by=request.user).order_by('-created_at')
+			budgets = Operation.objects.filter(category=budget_cat,created_by=request.user).order_by('-created_at')
+			goals = Operation.objects.filter(category=goal_cat,created_by=request.user).order_by('-created_at')
 
 			#serializers
 
@@ -46,6 +49,7 @@ class MainView(APIView):
 
 			return Response({
 				"incomes":incomes_ser.data,
+				"incomes_total":sum_spend,
 				"spends":spends_ser.data,
 				"savings":savings_ser.data,
 				"budgets":budgets_ser.data,
