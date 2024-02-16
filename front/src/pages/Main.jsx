@@ -5,13 +5,17 @@ import ProgressBar from '../components/Progressbar';
 import { Link } from 'react-router-dom';
 import Incomes_list from '../components/Incomes_list';
 import Savings_list from '../components/Savings_list';
-
+import Budgetchart from '../components/Budgetchart';
+import Budgets_list from '../components/Budgets_list';
+import Ai_advice from '../components/Ai_advice';
+import AllSearch from '../components/AllSearch';
 const Main = () => {
   const [total_spends,setTotal_spends] = useState('');
   const [financial_goals,setGoals] = useState([]);
   const [incomes,setIncomes] = useState([]);
   const [savings,setSavings] = useState([]);
-
+  const [budgets,setBudgets] = useState([]);
+  const [budgets_completion,setBudgetCompletion] = useState([]);
   useEffect(() => {
     if(localStorage.getItem('access_token') ===null){
       window.location.href = '/login'
@@ -33,6 +37,8 @@ const Main = () => {
           setGoals(data.goals)
           setIncomes(data.incomes)
           setSavings(data.savings)
+          setBudgets(data.budgets)
+          setBudgetCompletion(data.budgets_completion)
 
         }
         catch (e){
@@ -67,6 +73,11 @@ const Main = () => {
             <Link to='/saving_created' className="add saving"></Link>
           </div>
 
+          <div className="ai_advice">
+          <div className="title">СОВЕТ AI</div>
+            
+            <Ai_advice/>
+          </div>
           </div>
 
           <div className="right-column">
@@ -77,18 +88,19 @@ const Main = () => {
           </div>
 
           <div className="budgets">
-            <div className="title budgets">
+            <div className="title budget">
             Ваши бюджеты <br /> на месяц:
             </div>
+          <Budgetchart chart_data={budgets}/>
+          <div className="subtitle">выполнение бюджетов <br /> за последние 30 дней</div>
+          <Budgets_list list ={budgets_completion} />
+          <Link to='/income_budget' className="add budget"></Link>
           </div>
           </div>
-          
-          
-          
-
-          
+        
         </div>
 
+        <AllSearch/>
 
       </div>
       )

@@ -324,3 +324,114 @@ html{
   border-radius: 10px;
   padding: 25px;
 }
+.title.budget{
+  margin-bottom: 30px;
+}
+path #ac_layer_24b82d61_10{
+  display: none;
+  fill:none;
+}
+
+.add.budget{
+  background-image: url('./assets/add_budget.png');
+}
+
+.income.budget_per{
+  background-color: #650E17;
+}
+
+.incomes-list.budget_per{
+  margin-top: 20px;
+}
+.subtitle{
+  color: #fff;
+  font-weight: 500;
+  font-size: 35px;
+  margin-top: 10px;
+}
+
+/*Ai advice*/
+.ai_advice{
+  background: #868686;
+  margin-top: 37px;
+  padding: 25px;
+  border-radius: 10px;
+}
+.ai_text_wrapper{
+  max-width: 700px;
+  color: #fff;
+  font-size: 25px;
+  font-family: 700;
+}
+/*all topic*/
+.all_search-top{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  
+}
+.all_search-wrapper{
+  background: #000;
+  padding: 20px;
+  margin-top: 100px;
+  border-radius: 10px;
+}
+.title.all{
+  font-size: 39px;
+  justify-content: flex-start;
+}
+.search_input{
+  padding: 10px;
+  border-radius: 50px;
+  margin-left: 30px;
+  width: 600px;
+  outline: none;
+  border: none;
+  background: #868686;
+  color: #fff;
+}
+.search_input::placeholder{
+  color: #fff;
+}
+.filter{
+  padding: 7px;
+  background: #D9D9D9;
+  width:165px;
+  color: #000;
+  font-weight: 900;
+  font-size: 25px;
+  margin-left: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.filter_icon{
+  width: 50px;
+  height: 50px;
+}
+.operation-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.operation-row {
+  display: flex;
+  color: #ffff;
+  font-size: 25px;
+  font-weight: 500;
+  justify-content: center; /* Adjust as needed */
+  align-items: center;
+  text-align: right;
+}
+
+.operation-cat,
+.operation-type,
+.operation-sum {
+  flex: 1; /* Each column takes equal space */
+}
+.all_body{
+  margin-top: 20px;
+  padding-right: 10%;
+}
