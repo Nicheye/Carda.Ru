@@ -45,7 +45,10 @@ class MainView(APIView):
 				for spend in spends_for_cat:
 					sum+=spend.sum
 				dict_for_cat['name'] = str(budget.type)
-				dict_for_cat['percentage'] = f"{ int(sum/budget.sum*100)  } % ({spend.sum}) "
+				try:
+					dict_for_cat['percentage'] = f"{ round(sum/budget.sum*100)  } % ({spend.sum}) "
+				except:
+					pass
 				budgets_completion.append(dict_for_cat)
 			goals = Operation.objects.filter(category=goal_cat,created_by=request.user).order_by('-created_at')
 
@@ -198,7 +201,10 @@ def ai_message(data):
 	oauth_url = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth"
 	oauth_payload = {'scope': 'GIGACHAT_API_PERS'}
 	oauth_headers = {
-		
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Accept': 'application/json',
+		'RqUID': 'eb1c7911-998f-4720-91d8-e5177c943f5d',
+		'Authorization': 'Basic ZWIxYzc5MTEtOTk4Zi00NzIwLTkxZDgtZTUxNzdjOTQzZjVkOmZjMzhlOGVjLWZmNDYtNGZjZC1iN2E5LTdhYmU5Y2RiNDA4YQ=='
 	}
 
 	# Make OAuth token request
