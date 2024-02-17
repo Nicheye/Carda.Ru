@@ -9,13 +9,16 @@ import Budgetchart from '../components/Budgetchart';
 import Budgets_list from '../components/Budgets_list';
 import Ai_advice from '../components/Ai_advice';
 import AllSearch from '../components/AllSearch';
+import Detail_popup from '../components/Detail_popup';
 const Main = () => {
   const [total_spends,setTotal_spends] = useState('');
+  const [spends,setSpends] = useState([])
   const [financial_goals,setGoals] = useState([]);
   const [incomes,setIncomes] = useState([]);
   const [savings,setSavings] = useState([]);
   const [budgets,setBudgets] = useState([]);
   const [budgets_completion,setBudgetCompletion] = useState([]);
+  const [cur_cat_for_popup,setCat_forPopup] = useState([]);
   useEffect(() => {
     if(localStorage.getItem('access_token') ===null){
       window.location.href = '/login'
@@ -39,6 +42,7 @@ const Main = () => {
           setSavings(data.savings)
           setBudgets(data.budgets)
           setBudgetCompletion(data.budgets_completion)
+          setSpends(data.spends)
 
         }
         catch (e){
@@ -49,8 +53,11 @@ const Main = () => {
   
   try{
     return (
+      <>
+      
       <div className="container">
-        <div className="financial_goal">
+      <Detail_popup operations={cur_cat_for_popup}/> 
+        <div  className="financial_goal"  >
           <div className="title">ВАША ЦЕЛЬ:</div>
           <div className="title">{financial_goals[0].name}</div>
           <div className="title percent">{Math.round(financial_goals[0].already_done/financial_goals[0].sum*100)}%</div>
@@ -61,13 +68,13 @@ const Main = () => {
 
         <div className="main-wrapper">
           <div className="left-column">
-          <div className="spends">
+          <div className="spends" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => setCat_forPopup(spends)}>
             <div className="title spend">ваши траты за месяц:</div>
             <div className="spend_num">{total_spends}</div>
             <Link to='/spend_created' className="add spend"></Link>
           </div>
 
-          <div className="savings">
+          <div className="savings" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => setCat_forPopup(savings)} >
             <div className="title">сбережения</div>
             <Savings_list list={savings} />
             <Link to='/saving_created' className="add saving"></Link>
@@ -81,13 +88,13 @@ const Main = () => {
           </div>
 
           <div className="right-column">
-          <div className="incomes">
+          <div className="incomes" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => setCat_forPopup(incomes)}>
             <div className="title">ваша прибыль за месяц:</div>
             <Incomes_list list={incomes}/>
             <Link to='/income_created' className="add income"></Link>
           </div>
 
-          <div className="budgets">
+          <div className="budgets" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  onClick={() => setCat_forPopup(budgets)}>
             <div className="title budget">
             Ваши бюджеты <br /> на месяц:
             </div>
@@ -103,6 +110,7 @@ const Main = () => {
         <AllSearch/>
 
       </div>
+      </>
       )
   }
   catch{

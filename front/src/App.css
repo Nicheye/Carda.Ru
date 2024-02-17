@@ -435,3 +435,23 @@ path #ac_layer_24b82d61_10{
   margin-top: 20px;
   padding-right: 10%;
 }
+
+/*popup*/
+.oper_row{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  background: #7a7a7a;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.modal-content{
+  background: #000;
+}
+.title.operations{
+  margin-bottom: 20px;
+}
